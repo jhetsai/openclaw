@@ -332,12 +332,17 @@ function render(){
     document.getElementById('tb').innerHTML=periods.map(period=>{var row=byP[period];return'<tr><td>'+pData.find(x=>x.p.includes(period.slice(-4)))?.p+'</td><td>'+n(row.k)+'</td><td>$'+n(row.c)+'</td><td>$'+(row.c/row.k).toFixed(2)+'</td></tr>'}).join('');
   }
   if(t==='p'){
+    // Show ALL accounts from M, with 0 for those without data in selected period
+    var allAccounts=Object.keys(M);
     var byA={};
     data.forEach(x=>{byA[x.a]=(byA[x.a]||{k:0,c:0});byA[x.a].k+=x.k;byA[x.a].c+=x.c});
-    var accounts=[...new Set(data.map(x=>x.a))];
     document.getElementById('meterBox').style.display='block';
     document.getElementById('meterTh').innerHTML='<tr><th>電號</th><th>用電(度)</th><th>電費(元)</th><th>單價</th></tr>';
-    document.getElementById('meterTb').innerHTML=accounts.map(a=>{var row=byA[a];return'<tr><td>'+(M[a]?.a||a)+'</td><td>'+n(row.k)+'</td><td>$'+n(row.c)+'</td><td>$'+(row.c/row.k).toFixed(2)+'</td></tr>'}).join('');
+    document.getElementById('meterTb').innerHTML=allAccounts.map(a=>{
+      var row=byA[a]||{k:0,c:0};
+      var unit=row.k>0?'$'+((row.c/row.k)).toFixed(2):'-';
+      return'<tr><td>'+(M[a]?.a||a)+'</td><td>'+n(row.k)+'</td><td>'+(row.c>0?'$'+n(row.c):'-')+'</td><td>'+unit+'</td></tr>'
+    }).join('');
   } else {
     document.getElementById('meterBox').style.display='none';
   }
