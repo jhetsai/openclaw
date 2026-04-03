@@ -198,7 +198,9 @@ function render(){
   if(m!=='all')data=g(D,m);
   if(t==='p'&&p)data=g(data,p);
   var periods=[...new Set(data.map(x=>x.p))].sort();
+  
   if(t==='y'){
+    // Yearly view
     var byY={};
     data.forEach(x=>{byY[x.y]=(byY[x.y]||{k:0,c:0});byY[x.y].k+=x.k;byY[x.y].c+=x.c});
     periods=[...new Set(data.map(x=>x.y))].sort();
@@ -209,7 +211,41 @@ function render(){
     draw('cc',yData.map(x=>x.p),yData.map(x=>x.c),yData.map(x=>x.k));
     document.getElementById('th').innerHTML='<tr><th>年度</th><th>用電(度)</th><th>電費(元)</th><th>單價(元/度)</th></tr>';
     document.getElementById('tb').innerHTML=periods.map(y=>{var row=byY[y];return'<tr><td>'+y+'年</td><td>'+n(row.k)+'</td><td>$'+n(row.c)+'</td><td>$'+(row.c/row.k).toFixed(2)+'</td></tr>'}).join('');
-  } else {
+    document.getElementById('meterBox').style.display='none';
+  }
+  else if(t==='p'){
+    // Account comparison for selected period
+    var allAccounts=Object.keys(M);
+    var byA={};
+    data.forEach(x=>{byA[x.a]=(byA[x.a]||{k:0,c:0});byA[x.a].k+=x.k;byA[x.a].c+=x.c});
+    
+    // Calculate totals
+    tk=Object.values(byA).reduce((s,x)=>s+x.k,0);
+    tc=Object.values(byA).reduce((s,x)=>s+x.c,0);
+    
+    // Account labels (shortened address)
+    var accLabels=allAccounts.map(a=>({a:a,l:(M[a]?.a||a).slice(-8)}));
+    
+    // Draw charts with account data
+    document.getElementById('chartTitle').textContent='📊 各電號用電量（度）';
+    draw('ck',accLabels.map(x=>x.l),accLabels.map(a=>byA[a.a]?.k||0),accLabels.map(a=>byA[a.a]?.c||0));
+    draw('cc',accLabels.map(x=>x.l),accLabels.map(a=>byA[a.a]?.c||0),accLabels.map(a=>byA[a.a]?.k||0));
+    
+    // Hide detail table
+    document.getElementById('th').innerHTML='<tr><th>期別</th><th>用電(度)</th><th>電費(元)</th><th>單價(元/度)</th></tr>';
+    document.getElementById('tb').innerHTML='';
+    
+    // Show meterBox with all accounts
+    document.getElementById('meterBox').style.display='block';
+    document.getElementById('meterTh').innerHTML='<tr><th>電號</th><th>用電(度)</th><th>電費(元)</th><th>單價</th></tr>';
+    document.getElementById('meterTb').innerHTML=allAccounts.map(a=>{
+      var row=byA[a]||{k:0,c:0};
+      var unit=row.k>0?'$'+((row.c/row.k)).toFixed(2):'-';
+      return'<tr><td>'+(M[a]?.a||a)+'</td><td>'+n(row.k)+'</td><td>'+(row.c>0?'$'+n(row.c):'-')+'</td><td>'+unit+'</td></tr>'
+    }).join('');
+  }
+  else {
+    // Period view (t==='q')
     var byP={};
     data.forEach(x=>{byP[x.p]=(byP[x.p]||{k:0,c:0});byP[x.p].k+=x.k;byP[x.p].c+=x.c});
     tk=Object.values(byP).reduce((s,x)=>s+x.k,0);tc=Object.values(byP).reduce((s,x)=>s+x.c,0);
@@ -219,40 +255,10 @@ function render(){
     draw('ck',pData.map(x=>x.p),pData.map(x=>x.k),pData.map(x=>x.c));
     draw('cc',pData.map(x=>x.p),pData.map(x=>x.c),pData.map(x=>x.k));
     document.getElementById('th').innerHTML='<tr><th>期別</th><th>用電(度)</th><th>電費(元)</th><th>單價(元/度)</th></tr>';
-    var pLabels={'11311':'113/11','11401':'114/01','11403':'114/03','11405':'114/05','11407':'114/07','11409':'114/09','11411':'114/11','11501':'115/01','11503':'115/03'};
     document.getElementById('tb').innerHTML=periods.map(period=>{var row=byP[period];return'<tr><td>'+(pLabels[period]||period)+'</td><td>'+n(row.k)+'</td><td>$'+n(row.c)+'</td><td>$'+(row.c/row.k).toFixed(2)+'</td></tr>'}).join('');
-  }
-  if(t==='p'){
-    // Show each account's usage for selected period as bar chart
-    var allAccounts=Object.keys(M);
-    var byA={};
-    data.forEach(x=>{byA[x.a]=(byA[x.a]||{k:0,c:0});byA[x.a].k+=x.k;byA[x.a].c+=x.c});
-    
-    // Calculate totals for display
-    tk=Object.values(byA).reduce((s,x)=>s+x.k,0);
-    tc=Object.values(byA).reduce((s,x)=>s+x.c,0);
-    
-    // Draw kwh chart - one bar per account
-    var accts=allAccounts.filter(a=>byA[a]&&byA[a].k>0);
-    if(accts.length===0)accts=allAccounts;
-    draw('ck',accts.map(a=>M[a]?.a.slice(-6)||a),accts.map(a=>byA[a]?.k||0),accts.map(a=>byA[a]?.c||0));
-    draw('cc',accts.map(a=>M[a]?.a.slice(-6)||a),accts.map(a=>byA[a]?.c||0),accts.map(a=>byA[a]?.k||0));
-    
-    // Hide detail table for p mode
-    document.getElementById('th').innerHTML='';
-    document.getElementById('tb').innerHTML='';
-    
-    // Show meterBox table
-    document.getElementById('meterBox').style.display='block';
-    document.getElementById('meterTh').innerHTML='<tr><th>電號</th><th>用電(度)</th><th>電費(元)</th><th>單價</th></tr>';
-    document.getElementById('meterTb').innerHTML=allAccounts.map(a=>{
-      var row=byA[a]||{k:0,c:0};
-      var unit=row.k>0?'$'+((row.c/row.k)).toFixed(2):'-';
-      return'<tr><td>'+(M[a]?.a||a)+'</td><td>'+n(row.k)+'</td><td>'+(row.c>0?'$'+n(row.c):'-')+'</td><td>'+unit+'</td></tr>'
-    }).join('');
-  } else {
     document.getElementById('meterBox').style.display='none';
   }
+  
   document.getElementById('tk').textContent=n(tk)+' 度';
   document.getElementById('tc').textContent='$'+n(tc);
   document.getElementById('da').textContent=(tk/540).toFixed(1)+' 度/日';
