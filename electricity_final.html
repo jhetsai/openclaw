@@ -213,7 +213,8 @@ function render(){
     var byP={};
     data.forEach(x=>{byP[x.p]=(byP[x.p]||{k:0,c:0});byP[x.p].k+=x.k;byP[x.p].c+=x.c});
     tk=Object.values(byP).reduce((s,x)=>s+x.k,0);tc=Object.values(byP).reduce((s,x)=>s+x.c,0);
-    var pData=periods.map(period=>({p:period.slice(-4)===('11311')?'113/11':period.slice(-4)===('11401')?'114/01':period.slice(-4)===('11403')?'114/03':period.slice(-4)===('11405')?'114/05':period.slice(-4)===('11407')?'114/07':period.slice(-4)===('11409')?'114/09':period.slice(-4)===('11411')?'114/11':period.slice(-4)===('11501')?'115/01':'115/03',k:byP[period].k,c:byP[period].c}));
+    var pLabels={'11311':'113/11','11401':'114/01','11403':'114/03','11405':'114/05','11407':'114/07','11409':'114/09','11411':'114/11','11501':'115/01','11503':'115/03'};
+    var pData=periods.map(period=>({p:pLabels[period]||period,k:byP[period].k,c:byP[period].c}));
     document.getElementById('chartTitle').textContent='📊 用電量（度）';
     draw('ck',pData.map(x=>x.p),pData.map(x=>x.k),pData.map(x=>x.c));
     draw('cc',pData.map(x=>x.p),pData.map(x=>x.k),pData.map(x=>x.c));
