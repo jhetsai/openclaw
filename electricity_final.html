@@ -329,7 +329,8 @@ function render(){
     draw('ck',pData.map(x=>x.p),pData.map(x=>x.k),pData.map(x=>x.c));
     draw('cc',pData.map(x=>x.p),pData.map(x=>x.k),pData.map(x=>x.c));
     document.getElementById('th').innerHTML='<tr><th>期別</th><th>用電(度)</th><th>電費(元)</th><th>單價(元/度)</th></tr>';
-    document.getElementById('tb').innerHTML=periods.map(period=>{var row=byP[period];return'<tr><td>'+pData.find(x=>x.p.includes(period.slice(-4)))?.p+'</td><td>'+n(row.k)+'</td><td>$'+n(row.c)+'</td><td>$'+(row.c/row.k).toFixed(2)+'</td></tr>'}).join('');
+    var pLabels={'11311':'113/11','11401':'114/01','11403':'114/03','11405':'114/05','11407':'114/07','11409':'114/09','11411':'114/11','11501':'115/01','11503':'115/03'};
+    document.getElementById('tb').innerHTML=periods.map(period=>{var row=byP[period];return'<tr><td>'+(pLabels[period]||period)+'</td><td>'+n(row.k)+'</td><td>$'+n(row.c)+'</td><td>$'+(row.c/row.k).toFixed(2)+'</td></tr>'}).join('');
   }
   if(t==='p'){
     // Show ALL accounts from M, with 0 for those without data in selected period
