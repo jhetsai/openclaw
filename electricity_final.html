@@ -206,7 +206,7 @@ function render(){
     tk=yData.reduce((s,x)=>s+x.k,0);tc=yData.reduce((s,x)=>s+x.c,0);
     document.getElementById('chartTitle').textContent='📊 年度用電量（度）';
     draw('ck',yData.map(x=>x.p),yData.map(x=>x.k),yData.map(x=>x.c));
-    draw('cc',yData.map(x=>x.p),yData.map(x=>x.k),yData.map(x=>x.c));
+    draw('cc',yData.map(x=>x.p),yData.map(x=>x.c),yData.map(x=>x.k));
     document.getElementById('th').innerHTML='<tr><th>年度</th><th>用電(度)</th><th>電費(元)</th><th>單價(元/度)</th></tr>';
     document.getElementById('tb').innerHTML=periods.map(y=>{var row=byY[y];return'<tr><td>'+y+'年</td><td>'+n(row.k)+'</td><td>$'+n(row.c)+'</td><td>$'+(row.c/row.k).toFixed(2)+'</td></tr>'}).join('');
   } else {
@@ -217,7 +217,7 @@ function render(){
     var pData=periods.map(period=>({p:pLabels[period]||period,k:byP[period].k,c:byP[period].c}));
     document.getElementById('chartTitle').textContent='📊 用電量（度）';
     draw('ck',pData.map(x=>x.p),pData.map(x=>x.k),pData.map(x=>x.c));
-    draw('cc',pData.map(x=>x.p),pData.map(x=>x.k),pData.map(x=>x.c));
+    draw('cc',pData.map(x=>x.p),pData.map(x=>x.c),pData.map(x=>x.k));
     document.getElementById('th').innerHTML='<tr><th>期別</th><th>用電(度)</th><th>電費(元)</th><th>單價(元/度)</th></tr>';
     var pLabels={'11311':'113/11','11401':'114/01','11403':'114/03','11405':'114/05','11407':'114/07','11409':'114/09','11411':'114/11','11501':'115/01','11503':'115/03'};
     document.getElementById('tb').innerHTML=periods.map(period=>{var row=byP[period];return'<tr><td>'+(pLabels[period]||period)+'</td><td>'+n(row.k)+'</td><td>$'+n(row.c)+'</td><td>$'+(row.c/row.k).toFixed(2)+'</td></tr>'}).join('');
@@ -274,7 +274,7 @@ function draw(id,labels,kwh,cost){
     var bh=v/maxK*iH,bx=i*xS,bw=Math.max(xS*0.35,12);
     var rect=document.createElementNS('http://www.w3.org/2000/svg','rect');
     rect.setAttribute('x',bx-bw/2);rect.setAttribute('y',iH-bh);rect.setAttribute('width',bw);rect.setAttribute('height',bh);
-    rect.setAttribute('fill','#1565C0');rect.setAttribute('rx','3');
+    rect.setAttribute('fill',id==='cc'?'#F57C00':'#1565C0');rect.setAttribute('rx','3');
     g.appendChild(rect);
     var txt=document.createElementNS('http://www.w3.org/2000/svg','text');
     txt.setAttribute('x',bx);txt.setAttribute('y',iH-bh-5);
@@ -282,20 +282,7 @@ function draw(id,labels,kwh,cost){
     g.appendChild(txt);
   });
   
-  // Cost line (orange) for second chart
-  if(id==='cc'){
-    var path='M '+kwh.map((v,i)=>{var bh=v/maxK*iH;return(i*xS)+','+(iH-bh)}).join(' L ')+' L '+(kwh.length-1)*xS+','+iH+' L 0,'+iH+' Z';
-    var poly=document.createElementNS('http://www.w3.org/2000/svg','path');
-    poly.setAttribute('d',path);poly.setAttribute('fill','rgba(245,124,0,0.2)');
-    g.appendChild(poly);
-    cost.forEach((v,i)=>{
-      var bh=v/maxC*iH,bx=i*xS;
-      var circle=document.createElementNS('http://www.w3.org/2000/svg','circle');
-      circle.setAttribute('cx',bx);circle.setAttribute('cy',iH-bh);circle.setAttribute('r','4');
-      circle.setAttribute('fill','#F57C00');
-      g.appendChild(circle);
-    });
-  }
+  // Cost bars now shown directly (orange color set in bar drawing)
   
   // X axis
   labels.forEach((l,i)=>{
