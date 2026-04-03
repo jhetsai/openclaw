@@ -197,7 +197,7 @@ function gp(d,p){return d.filter(x=>x.p===p)}
 function render(){
   var m=S1.value,t=S2.value,p=S3.value,tk=0,tc=0,data=D;
   if(m!=='all')data=g(D,m);
-  if(t==='p'&&p)data=gp(data,p);
+  if(t==='p'&&p){data=gp(D,p);if(m!=='all')data=g(data,m);}
   var periods=[...new Set(data.map(x=>x.p))].sort();
   
   if(t==='y'){
