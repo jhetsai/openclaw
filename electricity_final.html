@@ -214,7 +214,7 @@ function render(){
     document.getElementById('meterBox').style.display='none';
   }
   else if(t==='p'){
-    // Account comparison for selected period
+    // Account comparison for selected period - TABLE ONLY
     var allAccounts=Object.keys(M);
     var byA={};
     data.forEach(x=>{byA[x.a]=(byA[x.a]||{k:0,c:0});byA[x.a].k+=x.k;byA[x.a].c+=x.c});
@@ -223,16 +223,13 @@ function render(){
     tk=Object.values(byA).reduce((s,x)=>s+x.k,0);
     tc=Object.values(byA).reduce((s,x)=>s+x.c,0);
     
-    // Account labels (shortened address)
-    var accLabels=allAccounts.map(a=>({a:a,l:(M[a]?.a||a).slice(-8)}));
-    
-    // Draw charts with account data
-    document.getElementById('chartTitle').textContent='📊 各電號用電量（度）';
-    draw('ck',accLabels.map(x=>x.l),accLabels.map(a=>byA[a.a]?.k||0),accLabels.map(a=>byA[a.a]?.c||0));
-    draw('cc',accLabels.map(x=>x.l),accLabels.map(a=>byA[a.a]?.c||0),accLabels.map(a=>byA[a.a]?.k||0));
+    // Hide charts
+    document.getElementById('chartTitle').textContent='📋 指定期別各電號用電';
+    document.getElementById('ck').innerHTML='';
+    document.getElementById('cc').innerHTML='';
     
     // Hide detail table
-    document.getElementById('th').innerHTML='<tr><th>期別</th><th>用電(度)</th><th>電費(元)</th><th>單價(元/度)</th></tr>';
+    document.getElementById('th').innerHTML='';
     document.getElementById('tb').innerHTML='';
     
     // Show meterBox with all accounts
