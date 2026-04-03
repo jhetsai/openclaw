@@ -214,7 +214,7 @@ function render(){
     document.getElementById('meterBox').style.display='none';
   }
   else if(t==='p'){
-    // Account comparison for selected period - TABLE ONLY
+    // Account comparison for selected period - TABLE ONLY, NO CHARTS
     var allAccounts=Object.keys(M);
     var byA={};
     data.forEach(x=>{byA[x.a]=(byA[x.a]||{k:0,c:0});byA[x.a].k+=x.k;byA[x.a].c+=x.c});
@@ -223,10 +223,9 @@ function render(){
     tk=Object.values(byA).reduce((s,x)=>s+x.k,0);
     tc=Object.values(byA).reduce((s,x)=>s+x.c,0);
     
-    // Hide charts
-    document.getElementById('chartTitle').textContent='📋 指定期別各電號用電';
-    document.getElementById('ck').innerHTML='';
-    document.getElementById('cc').innerHTML='';
+    // Hide both chart boxes completely
+    document.getElementById('chartBox').style.display='none';
+    document.getElementById('chartBox2').style.display='none';
     
     // Hide detail table
     document.getElementById('th').innerHTML='';
