@@ -223,10 +223,26 @@ function render(){
     document.getElementById('tb').innerHTML=periods.map(period=>{var row=byP[period];return'<tr><td>'+(pLabels[period]||period)+'</td><td>'+n(row.k)+'</td><td>$'+n(row.c)+'</td><td>$'+(row.c/row.k).toFixed(2)+'</td></tr>'}).join('');
   }
   if(t==='p'){
-    // Show ALL accounts from M, with 0 for those without data in selected period
+    // Show each account's usage for selected period as bar chart
     var allAccounts=Object.keys(M);
     var byA={};
     data.forEach(x=>{byA[x.a]=(byA[x.a]||{k:0,c:0});byA[x.a].k+=x.k;byA[x.a].c+=x.c});
+    
+    // Calculate totals for display
+    tk=Object.values(byA).reduce((s,x)=>s+x.k,0);
+    tc=Object.values(byA).reduce((s,x)=>s+x.c,0);
+    
+    // Draw kwh chart - one bar per account
+    var accts=allAccounts.filter(a=>byA[a]&&byA[a].k>0);
+    if(accts.length===0)accts=allAccounts;
+    draw('ck',accts.map(a=>M[a]?.a.slice(-6)||a),accts.map(a=>byA[a]?.k||0),accts.map(a=>byA[a]?.c||0));
+    draw('cc',accts.map(a=>M[a]?.a.slice(-6)||a),accts.map(a=>byA[a]?.c||0),accts.map(a=>byA[a]?.k||0));
+    
+    // Hide detail table for p mode
+    document.getElementById('th').innerHTML='';
+    document.getElementById('tb').innerHTML='';
+    
+    // Show meterBox table
     document.getElementById('meterBox').style.display='block';
     document.getElementById('meterTh').innerHTML='<tr><th>電號</th><th>用電(度)</th><th>電費(元)</th><th>單價</th></tr>';
     document.getElementById('meterTb').innerHTML=allAccounts.map(a=>{
