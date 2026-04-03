@@ -193,10 +193,11 @@ S2.addEventListener('change',function(){
 function p(v){return v||'-'}
 function n(v){return v!=null?v.toLocaleString():'-'}
 function g(d,k){return d.filter(x=>x.a===k)}
+function gp(d,p){return d.filter(x=>x.p===p)}
 function render(){
   var m=S1.value,t=S2.value,p=S3.value,tk=0,tc=0,data=D;
   if(m!=='all')data=g(D,m);
-  if(t==='p'&&p)data=g(data,p);
+  if(t==='p'&&p)data=gp(data,p);
   var periods=[...new Set(data.map(x=>x.p))].sort();
   
   if(t==='y'){
