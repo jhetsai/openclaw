@@ -217,6 +217,9 @@ function render(){
     document.getElementById('th').innerHTML='<tr><th>年度</th><th>用電(度)</th><th>電費(元)</th><th>單價(元/度)</th></tr>';
     document.getElementById('tb').innerHTML=periods.map(y=>{var row=byY[y];return'<tr><td>'+y+'年</td><td>'+n(row.k)+'</td><td>$'+n(row.c)+'</td><td>$'+(row.c/row.k).toFixed(2)+'</td></tr>'}).join('');
     document.getElementById('s1').style.display='inline-block';
+    document.getElementById('chartBox').style.display='block';
+    document.getElementById('chartBox2').style.display='block';
+    document.getElementById('detailBox').style.display='block';
     document.getElementById('meterBox').style.display='none';
   }
   else if(t==='p'){
@@ -261,6 +264,9 @@ function render(){
     document.getElementById('th').innerHTML='<tr><th>期別</th><th>用電(度)</th><th>電費(元)</th><th>單價(元/度)</th></tr>';
     document.getElementById('tb').innerHTML=periods.map(period=>{var row=byP[period];return'<tr><td>'+(pLabels[period]||period)+'</td><td>'+n(row.k)+'</td><td>$'+n(row.c)+'</td><td>$'+(row.c/row.k).toFixed(2)+'</td></tr>'}).join('');
     document.getElementById('s1').style.display='inline-block';
+    document.getElementById('chartBox').style.display='block';
+    document.getElementById('chartBox2').style.display='block';
+    document.getElementById('detailBox').style.display='block';
     document.getElementById('meterBox').style.display='none';
   }
   
