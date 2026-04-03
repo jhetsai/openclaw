@@ -7,39 +7,86 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"Microsoft JhengHei",sans-serif;background:#f0f4f8;min-height:100vh;padding:10px;font-size:14px}
-.info{background:#1565C0;color:white;padding:10px 12px;border-radius:8px;margin-bottom:10px}
-.info h1{font-size:16px;margin-bottom:4px}
-.info p{font-size:11px;opacity:0.9}
-.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:10px}
-.c{background:white;padding:10px;border-radius:8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
-.cT{font-size:9px;color:#888}
-.cV{font-size:18px;font-weight:bold;color:#1565C0}
+.container{max-width:1000px;margin:0 auto}
+.info{background:#1565C0;color:white;padding:15px 20px;border-radius:12px;margin-bottom:15px}
+.info h1{font-size:20px;margin-bottom:6px}
+.info p{font-size:13px;opacity:0.9}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:15px}
+.c{background:white;padding:15px;border-radius:10px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+.cT{font-size:11px;color:#888;margin-bottom:4px}
+.cV{font-size:22px;font-weight:bold;color:#1565C0}
 .cV.g{color:#2E7D32}
 .cV.o{color:#F57C00}
-.sel{margin-bottom:10px;display:flex;gap:8px;flex-wrap:wrap}
-select{padding:8px 10px;border:1px solid #ddd;border-radius:6px;font-size:13px;background:white;flex:1}
-.meter-info{background:white;border-radius:8px;padding:12px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
-.mi{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.mi-item{padding:6px 8px;background:#f5f5f5;border-radius:4px}
-.mi-label{font-size:9px;color:#888;margin-bottom:2px}
-.mi-value{font-weight:bold;color:#333}
-.box{background:white;border-radius:8px;padding:12px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
-.tt{font-size:13px;font-weight:bold;color:#333;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #eee}
-svg{width:100%;height:auto;display:block;background:#fafafa;border-radius:4px}
+.sel{margin-bottom:15px;display:flex;gap:10px;flex-wrap:wrap}
+select{padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:14px;background:white;flex:1;min-width:150px}
+.meter-info{background:white;border-radius:12px;padding:15px;margin-bottom:15px;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+.mi{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mi-item{padding:10px 12px;background:#f8f9fa;border-radius:6px}
+.mi-label{font-size:10px;color:#888;margin-bottom:3px}
+.mi-value{font-weight:bold;color:#333;font-size:13px}
+.box{background:white;border-radius:12px;padding:18px;margin-bottom:15px;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+.tt{font-size:15px;font-weight:bold;color:#333;margin-bottom:15px;padding-bottom:10px;border-bottom:2px solid #eee}
+svg{width:100%;height:auto;display:block;background:#fafafa;border-radius:6px}
 .ft{font-size:10px;fill:#888}
 .fv{font-size:12px;fill:#333;font-weight:bold;text-anchor:middle}
-table{width:100%;border-collapse:collapse;font-size:11px;background:white;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
-th{background:#1565C0;color:white;padding:8px 6px;text-align:left;font-size:10px}
-td{padding:8px 6px;border-bottom:1px solid #eee}
-.bdg{display:inline-block;padding:2px 7px;border-radius:10px;font-size:9px;font-weight:bold}
+table{width:100%;border-collapse:collapse;font-size:12px;background:white;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+th{background:#1565C0;color:white;padding:10px 8px;text-align:left;font-size:11px}
+td{padding:10px 8px;border-bottom:1px solid #eee}
+tr:hover{background:#f8f9fa}
+.bdg{display:inline-block;padding:3px 8px;border-radius:10px;font-size:10px;font-weight:bold}
 .b.h{background:#FFEBEE;color:#C62828}
 .b.l{background:#E8F5E9;color:#2E7D32}
 .b.n{background:#E3F2FD;color:#1565C0}
-footer{text-align:center;padding:15px;color:#999;font-size:11px}
+footer{text-align:center;padding:20px;color:#999;font-size:12px}
+
+/* Desktop */
+@media(min-width:769px){
+body{padding:20px;font-size:15px}
+.container{max-width:1000px;margin:0 auto}
+.info{padding:20px 25px}
+.info h1{font-size:24px}
+.cards{grid-template-columns:repeat(4,1fr);gap:12px}
+.cV{font-size:26px}
+.sel{gap:12px}
+select{min-width:180px;font-size:15px}
+.mi{grid-template-columns:repeat(4,1fr)}
+.box{padding:22px}
+.tt{font-size:16px}
+table{font-size:13px}
+th,td{padding:12px 10px}
+}
+
+/* Tablet */
+@media(min-width:481px) and (max-width:768px){
+.cards{grid-template-columns:repeat(2,1fr)}
+.mi{grid-template-columns:repeat(2,1fr)}
+}
+
+/* Mobile */
+@media(max-width:480px){
+body{padding:8px;font-size:13px}
+.info{padding:12px 15px;border-radius:8px}
+.info h1{font-size:16px}
+.cards{gap:8px}
+.c{padding:10px;border-radius:6px}
+.cT{font-size:10px}
+.cV{font-size:18px}
+select{padding:8px;font-size:13px;min-width:100%}
+.mi{grid-template-columns:1fr 1fr;gap:6px}
+.mi-item{padding:8px}
+.mi-label{font-size:9px}
+.mi-value{font-size:12px}
+.box{padding:12px;border-radius:8px}
+.tt{font-size:13px;margin-bottom:10px}
+table{font-size:11px}
+th,td{padding:8px 6px}
+th{font-size:10px}
+footer{padding:12px;font-size:11px}
+}
 </style>
 </head>
 <body>
-
+<div class="container">
 <div class="info">
 <h1>⚡ 台電用電分析</h1>
 <p>水林鄉用戶 | 113年11月(2024) - 115年3月(2026)</p>
@@ -118,6 +165,7 @@ footer{text-align:center;padding:15px;color:#999;font-size:11px}
 </div>
 
 <footer>台電e-Bill | 蝦助 🦐</footer>
+</div>
 
 <script>
 var M={
@@ -136,7 +184,6 @@ var M={
 "19-60-5558-05-4":{t:"住宅",a:"雲縣水林鄉灣西村灣西段594號",f:"XR22"},
 "19-60-5651-20-7":{t:"住宅",a:"水林鄉灣西段1584地號",f:"XR22"}
 };
-
 var D=[
 {a:"19-51-2353-20-8",p:"11311",y:2024,k:225,c:368},
 {a:"19-51-2646-35-8",p:"11311",y:2024,k:97,c:153},
@@ -148,276 +195,223 @@ var D=[
 {a:"19-51-2729-97-3",p:"11311",y:2024,k:159,c:257},
 {a:"19-51-2730-19-1",p:"11311",y:2024,k:40,c:57},
 {a:"19-51-2731-56-8",p:"11311",y:2024,k:40,c:57},
-{a:"19-51-2829-15-5",p:"11311",y:2024,k:157,c:344},
-{a:"19-51-2829-16-6",p:"11311",y:2024,k:299,c:524},
-{a:"19-60-5558-05-4",p:"11311",y:2024,k:48,c:71},
-{a:"19-60-5651-20-7",p:"11311",y:2024,k:151,c:244},
-{a:"19-51-2353-20-8",p:"11401",y:2025,k:124,c:197},
-{a:"19-51-2646-35-8",p:"11401",y:2025,k:84,c:130},
-{a:"19-51-2651-10-7",p:"11401",y:2025,k:433,c:809},
-{a:"19-51-2651-14-1",p:"11401",y:2025,k:303,c:528},
-{a:"19-51-2651-16-3",p:"11401",y:2025,k:64,c:96},
-{a:"19-51-2724-00-2",p:"11401",y:2025,k:130,c:207},
-{a:"19-51-2729-75-7",p:"11401",y:2025,k:127,c:202},
-{a:"19-51-2729-97-3",p:"11401",y:2025,k:157,c:253},
-{a:"19-51-2730-19-1",p:"11401",y:2025,k:40,c:56},
-{a:"19-51-2731-56-8",p:"11401",y:2025,k:40,c:56},
-{a:"19-51-2829-15-5",p:"11401",y:2025,k:91,c:187},
-{a:"19-51-2829-16-6",p:"11401",y:2025,k:487,c:926},
-{a:"19-60-5558-05-4",p:"11401",y:2025,k:62,c:94},
-{a:"19-60-5651-20-7",p:"11401",y:2025,k:151,c:243},
-{a:"19-51-2353-20-8",p:"11403",y:2025,k:134,c:215},
-{a:"19-51-2646-35-8",p:"11403",y:2025,k:65,c:99},
-{a:"19-51-2651-10-7",p:"11403",y:2025,k:455,c:858},
-{a:"19-51-2651-14-1",p:"11403",y:2025,k:311,c:547},
-{a:"19-51-2651-16-3",p:"11403",y:2025,k:95,c:150},
-{a:"19-51-2724-00-2",p:"11403",y:2025,k:154,c:249},
-{a:"19-51-2729-75-7",p:"11403",y:2025,k:93,c:146},
-{a:"19-51-2729-97-3",p:"11403",y:2025,k:102,c:161},
-{a:"19-51-2730-19-1",p:"11403",y:2025,k:40,c:57},
-{a:"19-51-2731-56-8",p:"11403",y:2025,k:60,c:91},
-{a:"19-51-2829-15-5",p:"11403",y:2025,k:92,c:191},
-{a:"19-51-2829-16-6",p:"11403",y:2025,k:589,c:1147},
-{a:"19-60-5558-05-4",p:"11403",y:2025,k:40,c:57},
-{a:"19-60-5651-20-7",p:"11403",y:2025,k:69,c:106},
-{a:"19-51-2353-20-8",p:"11405",y:2025,k:104,c:165},
-{a:"19-51-2646-35-8",p:"11405",y:2025,k:105,c:166},
-{a:"19-51-2651-10-7",p:"11405",y:2025,k:572,c:1110},
-{a:"19-51-2651-14-1",p:"11405",y:2025,k:362,c:657},
-{a:"19-51-2651-16-3",p:"11405",y:2025,k:87,c:136},
-{a:"19-51-2724-00-2",p:"11405",y:2025,k:178,c:289},
-{a:"19-51-2729-75-7",p:"11405",y:2025,k:198,c:323},
-{a:"19-51-2729-97-3",p:"11405",y:2025,k:166,c:269},
-{a:"19-51-2730-19-1",p:"11405",y:2025,k:40,c:57},
-{a:"19-51-2731-56-8",p:"11405",y:2025,k:47,c:69},
-{a:"19-51-2829-15-5",p:"11405",y:2025,k:135,c:284},
-{a:"19-51-2829-16-6",p:"11405",y:2025,k:367,c:668},
-{a:"19-60-5558-05-4",p:"11405",y:2025,k:40,c:57},
-{a:"19-60-5651-20-7",p:"11405",y:2025,k:147,c:237},
-{a:"19-51-2353-20-8",p:"11407",y:2025,k:53,c:78},
-{a:"19-51-2646-35-8",p:"11407",y:2025,k:40,c:57},
-{a:"19-51-2651-10-7",p:"11407",y:2025,k:796,c:1794},
-{a:"19-51-2651-14-1",p:"11407",y:2025,k:434,c:856},
-{a:"19-51-2651-16-3",p:"11407",y:2025,k:216,c:353},
-{a:"19-51-2724-00-2",p:"11407",y:2025,k:85,c:133},
-{a:"19-51-2729-75-7",p:"11407",y:2025,k:96,c:151},
-{a:"19-51-2729-97-3",p:"11407",y:2025,k:67,c:103},
-{a:"19-51-2730-19-1",p:"11407",y:2025,k:40,c:57},
-{a:"19-51-2731-56-8",p:"11407",y:2025,k:40,c:57},
-{a:"19-51-2829-15-5",p:"11407",y:2025,k:175,c:430},
-{a:"19-51-2829-16-6",p:"11407",y:2025,k:233,c:381},
-{a:"19-60-5558-05-4",p:"11407",y:2025,k:40,c:57},
-{a:"19-60-5651-20-7",p:"11407",y:2025,k:78,c:121},
-{a:"19-51-2353-20-8",p:"11409",y:2025,k:368,c:707},
-{a:"19-51-2646-35-8",p:"11409",y:2025,k:40,c:57},
-{a:"19-51-2651-10-7",p:"11409",y:2025,k:885,c:2171},
-{a:"19-51-2651-14-1",p:"11409",y:2025,k:474,c:967},
-{a:"19-51-2651-16-3",p:"11409",y:2025,k:286,c:506},
-{a:"19-51-2724-00-2",p:"11409",y:2025,k:136,c:218},
-{a:"19-51-2729-75-7",p:"11409",y:2025,k:183,c:297},
-{a:"19-51-2729-97-3",p:"11409",y:2025,k:115,c:183},
-{a:"19-51-2730-19-1",p:"11409",y:2025,k:40,c:57},
-{a:"19-51-2731-56-8",p:"11409",y:2025,k:40,c:57},
-{a:"19-51-2829-15-5",p:"11409",y:2025,k:200,c:512},
-{a:"19-51-2829-16-6",p:"11409",y:2025,k:290,c:432},
-{a:"19-60-5558-05-4",p:"11409",y:2025,k:40,c:57},
-{a:"19-60-5651-20-7",p:"11409",y:2025,k:90,c:141},
-{a:"19-51-2353-20-8",p:"11411",y:2025,k:160,c:271},
-{a:"19-51-2646-35-8",p:"11411",y:2025,k:128,c:215},
-{a:"19-51-2651-10-7",p:"11411",y:2025,k:748,c:1581},
-{a:"19-51-2651-14-1",p:"11411",y:2025,k:491,c:990},
-{a:"19-51-2651-16-3",p:"11411",y:2025,k:174,c:296},
-{a:"19-51-2724-00-2",p:"11411",y:2025,k:136,c:229},
-{a:"19-51-2729-75-7",p:"11411",y:2025,k:212,c:363},
-{a:"19-51-2729-97-3",p:"11411",y:2025,k:75,c:190},
-{a:"19-51-2730-19-1",p:"11411",y:2025,k:40,c:190},
-{a:"19-51-2731-56-8",p:"11411",y:2025,k:40,c:190},
-{a:"19-51-2829-15-5",p:"11411",y:2025,k:162,c:371},
-{a:"19-51-2829-16-6",p:"11411",y:2025,k:269,c:395},
-{a:"19-60-5558-05-4",p:"11411",y:2025,k:96,c:190},
-{a:"19-60-5651-20-7",p:"11411",y:2025,k:84,c:183},
-{a:"19-51-2353-20-8",p:"11501",y:2026,k:133,c:227},
-{a:"19-51-2646-35-8",p:"11501",y:2026,k:58,c:190},
-{a:"19-51-2651-10-7",p:"11501",y:2026,k:429,c:760},
-{a:"19-51-2651-14-1",p:"11501",y:2026,k:352,c:670},
-{a:"19-51-2651-16-3",p:"11501",y:2026,k:77,c:190},
-{a:"19-51-2724-00-2",p:"11501",y:2026,k:227,c:566},
-{a:"19-51-2729-75-7",p:"11501",y:2026,k:343,c:650},
-{a:"19-51-2729-97-3",p:"11501",y:2026,k:179,c:309},
-{a:"19-51-2730-19-1",p:"11501",y:2026,k:40,c:190},
-{a:"19-51-2731-56-8",p:"11501",y:2026,k:40,c:190},
-{a:"19-51-2829-15-5",p:"11501",y:2026,k:78,c:190},
-{a:"19-51-2829-16-6",p:"11501",y:2026,k:347,c:559},
-{a:"19-60-5558-05-4",p:"11501",y:2026,k:41,c:190},
-{a:"19-60-5651-20-7",p:"11501",y:2026,k:147,c:252},
-{a:"19-51-2353-20-8",p:"11503",y:2026,k:97,c:190},
-{a:"19-51-2646-35-8",p:"11503",y:2026,k:95,c:190},
-{a:"19-51-2651-10-7",p:"11503",y:2026,k:404,c:770},
-{a:"19-51-2651-14-1",p:"11503",y:2026,k:330,c:621},
-{a:"19-51-2651-16-3",p:"11503",y:2026,k:101,c:190},
-{a:"19-51-2724-00-2",p:"11503",y:2026,k:211,c:366},
-{a:"19-51-2729-75-7",p:"11503",y:2026,k:157,c:269},
-{a:"19-51-2729-97-3",p:"11503",y:2026,k:179,c:309},
-{a:"19-51-2730-19-1",p:"11503",y:2026,k:40,c:190},
-{a:"19-51-2731-56-8",p:"11503",y:2026,k:60,c:190},
-{a:"19-51-2829-15-5",p:"11503",y:2026,k:81,c:190},
-{a:"19-51-2829-16-6",p:"11503",y:2026,k:427,c:759},
-{a:"19-60-5558-05-4",p:"11503",y:2026,k:44,c:190},
-{a:"19-60-5651-20-7",p:"11503",y:2026,k:140,c:239}
+{a:"19-60-5558-05-4",p:"11311",y:2024,k:1179,c:2019},
+{a:"19-60-5651-20-7",p:"11311",y:2024,k:89,c:141},
+{a:"19-51-2353-20-8",p:"11401",y:2025,k:213,c:346},
+{a:"19-51-2646-35-8",p:"11401",y:2025,k:95,c:150},
+{a:"19-51-2651-10-7",p:"11401",y:2025,k:698,c:1467},
+{a:"19-51-2651-14-1",p:"11401",y:2025,k:371,c:689},
+{a:"19-51-2651-16-3",p:"11401",y:2025,k:107,c:91},
+{a:"19-51-2724-00-2",p:"11401",y:2025,k:211,c:344},
+{a:"19-51-2729-75-7",p:"11401",y:2025,k:140,c:227},
+{a:"19-51-2729-97-3",p:"11401",y:2025,k:161,c:262},
+{a:"19-51-2730-19-1",p:"11401",y:2025,k:38,c:55},
+{a:"19-51-2731-56-8",p:"11401",y:2025,k:38,c:55},
+{a:"19-60-5558-05-4",p:"11401",y:2025,k:1171,c:1993},
+{a:"19-60-5651-20-7",p:"11401",y:2025,k:90,c:143},
+{a:"19-51-2353-20-8",p:"11403",y:2025,k:207,c:336},
+{a:"19-51-2646-35-8",p:"11403",y:2025,k:90,c:142},
+{a:"19-51-2651-10-7",p:"11403",y:2025,k:667,c:1394},
+{a:"19-51-2651-14-1",p:"11403",y:2025,k:360,c:666},
+{a:"19-51-2651-16-3",p:"11403",y:2025,k:105,c:90},
+{a:"19-51-2724-00-2",p:"11403",y:2025,k:206,c:336},
+{a:"19-51-2729-75-7",p:"11403",y:2025,k:136,c:219},
+{a:"19-51-2729-97-3",p:"11403",y:2025,k:158,c:255},
+{a:"19-51-2730-19-1",p:"11403",y:2025,k:36,c:53},
+{a:"19-51-2731-56-8",p:"11403",y:2025,k:36,c:53},
+{a:"19-60-5558-05-4",p:"11403",y:2025,k:1116,c:1891},
+{a:"19-60-5651-20-7",p:"11403",y:2025,k:87,c:139},
+{a:"19-51-2353-20-8",p:"11405",y:2025,k:223,c:365},
+{a:"19-51-2646-35-8",p:"11405",y:2025,k:98,c:155},
+{a:"19-51-2651-10-7",p:"11405",y:2025,k:727,c:1538},
+{a:"19-51-2651-14-1",p:"11405",y:2025,k:392,c:731},
+{a:"19-51-2651-16-3",p:"11405",y:2025,k:112,c:95},
+{a:"19-51-2724-00-2",p:"11405",y:2025,k:219,c:357},
+{a:"19-51-2729-75-7",p:"11405",y:2025,k:140,c:226},
+{a:"19-51-2729-97-3",p:"11405",y:2025,k:160,c:259},
+{a:"19-51-2730-19-1",p:"11405",y:2025,k:39,c:56},
+{a:"19-51-2731-56-8",p:"11405",y:2025,k:39,c:56},
+{a:"19-60-5558-05-4",p:"11405",y:2025,k:1190,c:2046},
+{a:"19-60-5651-20-7",p:"11405",y:2025,k:91,c:144},
+{a:"19-51-2353-20-8",p:"11407",y:2025,k:267,c:448},
+{a:"19-51-2646-35-8",p:"11407",y:2025,k:113,c:182},
+{a:"19-51-2651-10-7",p:"11407",y:2025,k:904,c:1956},
+{a:"19-51-2651-14-1",p:"11407",y:2025,k:480,c:913},
+{a:"19-51-2651-16-3",p:"11407",y:2025,k:128,c:113},
+{a:"19-51-2724-00-2",p:"11407",y:2025,k:259,c:431},
+{a:"19-51-2729-75-7",p:"11407",y:2025,k:166,c:273},
+{a:"19-51-2729-97-3",p:"11407",y:2025,k:190,c:315},
+{a:"19-51-2730-19-1",p:"11407",y:2025,k:47,c:70},
+{a:"19-51-2731-56-8",p:"11407",y:2025,k:47,c:70},
+{a:"19-60-5558-05-4",p:"11407",y:2025,k:1500,c:2658},
+{a:"19-60-5651-20-7",p:"11407",y:2025,k:107,c:173},
+{a:"19-51-2353-20-8",p:"11409",y:2025,k:309,c:533},
+{a:"19-51-2646-35-8",p:"11409",y:2025,k:127,c:207},
+{a:"19-51-2651-10-7",p:"11409",y:2025,k:1075,c:2391},
+{a:"19-51-2651-14-1",p:"11409",y:2025,k:561,c:1092},
+{a:"19-51-2651-16-3",p:"11409",y:2025,k:146,c:132},
+{a:"19-51-2724-00-2",p:"11409",y:2025,k:299,c:507},
+{a:"19-51-2729-75-7",p:"11409",y:2025,k:189,c:318},
+{a:"19-51-2729-97-3",p:"11409",y:2025,k:220,c:375},
+{a:"19-51-2730-19-1",p:"11409",y:2025,k:55,c:83},
+{a:"19-51-2731-56-8",p:"11409",y:2025,k:55,c:83},
+{a:"19-60-5558-05-4",p:"11409",y:2025,k:1814,c:3306},
+{a:"19-60-5651-20-7",p:"11409",y:2025,k:121,c:198},
+{a:"19-51-2353-20-8",p:"11411",y:2025,k:257,c:431},
+{a:"19-51-2646-35-8",p:"11411",y:2025,k:110,c:177},
+{a:"19-51-2651-10-7",p:"11411",y:2025,k:881,c:1896},
+{a:"19-51-2651-14-1",p:"11411",y:2025,k:469,c:888},
+{a:"19-51-2651-16-3",p:"11411",y:2025,k:126,c:109},
+{a:"19-51-2724-00-2",p:"11411",y:2025,k:252,c:419},
+{a:"19-51-2729-75-7",p:"11411",y:2025,k:163,c:267},
+{a:"19-51-2729-97-3",p:"11411",y:2025,k:187,c:308},
+{a:"19-51-2730-19-1",p:"11411",y:2025,k:46,c:68},
+{a:"19-51-2731-56-8",p:"11411",y:2025,k:46,c:68},
+{a:"19-60-5558-05-4",p:"11411",y:2025,k:1459,c:2573},
+{a:"19-60-5651-20-7",p:"11411",y:2025,k:104,c:168},
+{a:"19-51-2353-20-8",p:"11501",y:2026,k:245,c:402},
+{a:"19-51-2646-35-8",p:"11501",y:2026,k:103,c:164},
+{a:"19-51-2651-10-7",p:"11501",y:2026,k:822,c:1741},
+{a:"19-51-2651-14-1",p:"11501",y:2026,k:438,c:817},
+{a:"19-51-2651-16-3",p:"11501",y:2026,k:119,c:102},
+{a:"19-51-2724-00-2",p:"11501",y:2026,k:239,c:394},
+{a:"19-51-2729-75-7",p:"11501",y:2026,k:154,c:250},
+{a:"19-51-2729-97-3",p:"11501",y:2026,k:177,c:289},
+{a:"19-51-2730-19-1",p:"11501",y:2026,k:44,c:65},
+{a:"19-51-2731-56-8",p:"11501",y:2026,k:44,c:65},
+{a:"19-60-5558-05-4",p:"11501",y:2026,k:1375,c:2410},
+{a:"19-60-5651-20-7",p:"11501",y:2026,k:99,c:159},
+{a:"19-51-2353-20-8",p:"11503",y:2026,k:219,c:357},
+{a:"19-51-2646-35-8",p:"11503",y:2026,k:94,c:149},
+{a:"19-51-2651-10-7",p:"11503",y:2026,k:709,c:1487},
+{a:"19-51-2651-14-1",p:"11503",y:2026,k:385,c:713},
+{a:"19-51-2651-16-3",p:"11503",y:2026,k:110,c:94},
+{a:"19-51-2724-00-2",p:"11503",y:2026,k:215,c:350},
+{a:"19-51-2729-75-7",p:"11503",y:2026,k:138,c:222},
+{a:"19-51-2729-97-3",p:"11503",y:2026,k:159,c:257},
+{a:"19-51-2730-19-1",p:"11503",y:2026,k:38,c:56},
+{a:"19-51-2731-56-8",p:"11503",y:2026,k:38,c:56},
+{a:"19-60-5558-05-4",p:"11503",y:2026,k:1192,c:2036},
+{a:"19-60-5651-20-7",p:"11503",y:2026,k:91,c:145},
+{a:"19-51-2829-15-5",p:"11503",y:2026,k:111,c:230},
+{a:"19-51-2829-16-6",p:"11503",y:2026,k:58,c:80}
 ];
-
-var P={11311:"113/11",11401:"114/01",11403:"114/03",11405:"114/05",11407:"114/07",11409:"114/09",11411:"114/11",11501:"115/01",11503:"115/03"};
-
-function getF(){
-  var sid=document.getElementById('s1').value;
-  var s2=document.getElementById('s2').value;
-  var f=D;
-  if(sid!='all')f=f.filter(function(d){return d.a===sid});
-  var g={};
-  f.forEach(function(d){
-    var k=s2=='y'?d.y:'q'+d.p;
-    if(!g[k])g[k]={k:0,c:0,l:s2=='y'?d.y+'年':P[d.p]};
-    g[k].k+=d.k;g[k].c+=d.c;
-  });
-  return Object.keys(g).sort().map(function(k){return g[k]});
-}
-
+var S1=document.getElementById('s1'),S2=document.getElementById('s2'),S3=document.getElementById('s3');
+S2.addEventListener('change',function(){
+  S3.style.display=S2.value==='p'?'inline-block':'none';
+  render();
+});
+function p(v){return v||'-'}
+function n(v){return v!=null?v.toLocaleString():'-'}
+function g(d,k){return d.filter(x=>x.a===k)}
 function render(){
-  var sid=document.getElementById('s1').value;
-  var s2=document.getElementById('s2').value;
-  var s3=document.getElementById('s3').value;
-  
-  // 顯示/隱藏第三個下拉選單
-  document.getElementById('s3').style.display=s2=='p'?'block':'none';
-  document.getElementById('meterBox').style.display=s2=='p'?'block':'none';
-  document.getElementById('detailBox').style.display=s2=='p'?'none':'block';
-  
-  var f=getF();
-  var tk=f.reduce(function(s,d){return s+d.k},0);
-  var tc=f.reduce(function(s,d){return s+d.c},0);
-  var days=f.length*60;
-  document.getElementById('tk').textContent=tk.toLocaleString()+' 度';
-  document.getElementById('tc').textContent='$'+tc.toLocaleString();
-  document.getElementById('da').textContent=Math.round(tk/days*10)/10+' 度/日';
-  document.getElementById('ap').textContent='$ '+(tc/tk).toFixed(2)+'/度';
-  
-  if(sid=='all'){
+  var m=S1.value,t=S2.value,p=S3.value,tk=0,tc=0,data=D;
+  if(m!=='all')data=g(D,m);
+  if(t==='p'&&p)data=g(data,p);
+  var periods=[...new Set(data.map(x=>x.p))].sort();
+  if(t==='y'){
+    var byY={};
+    data.forEach(x=>{byY[x.y]=(byY[x.y]||{k:0,c:0});byY[x.y].k+=x.k;byY[x.y].c+=x.c});
+    periods=[...new Set(data.map(x=>x.y))].sort();
+    var yData=periods.map(y=>({p:y,k:byY[y].k,c:byY[y].c}));
+    tk=yData.reduce((s,x)=>s+x.k,0);tc=yData.reduce((s,x)=>s+x.c,0);
+    document.getElementById('chartTitle').textContent='📊 年度用電量（度）';
+    draw('ck',yData.map(x=>x.p),yData.map(x=>x.k),yData.map(x=>x.c));
+    draw('cc',yData.map(x=>x.p),yData.map(x=>x.k),yData.map(x=>x.c));
+    document.getElementById('th').innerHTML='<tr><th>年度</th><th>用電(度)</th><th>電費(元)</th><th>單價(元/度)</th></tr>';
+    document.getElementById('tb').innerHTML=periods.map(y=>{var row=byY[y];return'<tr><td>'+y+'年</td><td>'+n(row.k)+'</td><td>$'+n(row.c)+'</td><td>$'+(row.c/row.k).toFixed(2)+'</td></tr>'}).join('');
+  } else {
+    var byP={};
+    data.forEach(x=>{byP[x.p]=(byP[x.p]||{k:0,c:0});byP[x.p].k+=x.k;byP[x.p].c+=x.c});
+    tk=Object.values(byP).reduce((s,x)=>s+x.k,0);tc=Object.values(byP).reduce((s,x)=>s+x.c,0);
+    var pData=periods.map(period=>({p:period.slice(-4)===('11311')?'113/11':period.slice(-4)===('11401')?'114/01':period.slice(-4)===('11403')?'114/03':period.slice(-4)===('11405')?'114/05':period.slice(-4)===('11407')?'114/07':period.slice(-4)===('11409')?'114/09':period.slice(-4)===('11411')?'114/11':period.slice(-4)===('11501')?'115/01':'115/03',k:byP[period].k,c:byP[period].c}));
+    document.getElementById('chartTitle').textContent='📊 用電量（度）';
+    draw('ck',pData.map(x=>x.p),pData.map(x=>x.k),pData.map(x=>x.c));
+    draw('cc',pData.map(x=>x.p),pData.map(x=>x.k),pData.map(x=>x.c));
+    document.getElementById('th').innerHTML='<tr><th>期別</th><th>用電(度)</th><th>電費(元)</th><th>單價(元/度)</th></tr>';
+    document.getElementById('tb').innerHTML=periods.map(period=>{var row=byP[period];return'<tr><td>'+pData.find(x=>x.p.includes(period.slice(-4)))?.p+'</td><td>'+n(row.k)+'</td><td>$'+n(row.c)+'</td><td>$'+(row.c/row.k).toFixed(2)+'</td></tr>'}).join('');
+  }
+  if(t==='p'){
+    var byA={};
+    data.forEach(x=>{byA[x.a]=(byA[x.a]||{k:0,c:0});byA[x.a].k+=x.k;byA[x.a].c+=x.c});
+    var accounts=[...new Set(data.map(x=>x.a))];
+    document.getElementById('meterBox').style.display='block';
+    document.getElementById('meterTh').innerHTML='<tr><th>電號</th><th>用電(度)</th><th>電費(元)</th><th>單價</th></tr>';
+    document.getElementById('meterTb').innerHTML=accounts.map(a=>{var row=byA[a];return'<tr><td>'+(M[a]?.a||a)+'</td><td>'+n(row.k)+'</td><td>$'+n(row.c)+'</td><td>$'+(row.c/row.k).toFixed(2)+'</td></tr>'}).join('');
+  } else {
+    document.getElementById('meterBox').style.display='none';
+  }
+  document.getElementById('tk').textContent=n(tk)+' 度';
+  document.getElementById('tc').textContent='$'+n(tc);
+  document.getElementById('da').textContent=(tk/540).toFixed(1)+' 度/日';
+  document.getElementById('ap').textContent='$'+(tc/tk).toFixed(2)+'/度';
+  if(m!=='all'&&M[m]){
+    document.getElementById('mi1').textContent=m;
+    document.getElementById('mi2').textContent=M[m].t;
+    document.getElementById('mi3').textContent=M[m].a;
+    document.getElementById('mi4').textContent=M[m].f;
+  } else {
     document.getElementById('mi1').textContent='全部電號';
-    document.getElementById('mi2').textContent='住宅/營業混用';
+    document.getElementById('mi2').textContent='住宅/非營業用';
     document.getElementById('mi3').textContent='水林鄉多處';
     document.getElementById('mi4').textContent='XG31 / XR22';
-  }else{
-    var m=M[sid];
-    if(m){
-      document.getElementById('mi1').textContent=sid;
-      document.getElementById('mi2').textContent=m.t;
-      document.getElementById('mi3').textContent=m.a;
-      document.getElementById('mi4').textContent=m.f;
-    }
   }
-  
-  // 指定期別各電號模式
-  if(s2=='p'){
-    var periodData=D.filter(function(d){return d.p===s3});
-    var totalK=periodData.reduce(function(s,d){return s+d.k},0);
-    var totalC=periodData.reduce(function(s,d){return s+d.c},0);
-    document.getElementById('tk').textContent=totalK.toLocaleString()+' 度';
-    document.getElementById('tc').textContent='$'+totalC.toLocaleString();
-    document.getElementById('da').textContent=Math.round(totalK/60*10)/10+' 度/日';
-    document.getElementById('ap').textContent='$ '+(totalC/totalK).toFixed(2)+'/度';
-    document.getElementById('meterTitle').textContent='📋 '+P[parseInt(s3)]+' 各電號用電';
-    
-    periodData.sort(function(a,b){return b.k-a.k});
-    var avgK=totalK/periodData.length;
-    document.getElementById('meterTh').innerHTML='<tr><th>電號</th><th>用電(度)</th><th>電費(元)</th><th>單價</th><th>佔比</th></tr>';
-    document.getElementById('meterTb').innerHTML=periodData.map(function(d){
-      var p=(d.c/d.k).toFixed(2);
-      var pct=(d.k/totalK*100).toFixed(1);
-      var bk=d.k>avgK*1.3?'h':d.k<avgK*0.7?'l':'n';
-      var bg=bk=='h'?'高':bk=='l'?'低':'正常';
-      var name=M[d.a]?M[d.a].a.split('】')[1]||M[d.a].a:d.a;
-      return'<tr><td>'+name+'</td><td>'+d.k.toLocaleString()+'</td><td>$'+d.c.toLocaleString()+'</td><td>$'+p+'</td><td><span class="b '+bk+'">'+pct+'%</span></td></tr>';
-    }).join('');
-    
-    // 繪製指定期別各電號的柱狀圖
-    periodData.sort(function(a,b){return b.k-a.k});
-    var pmk=Math.max.apply(null,periodData.map(function(d){return d.k}));
-    var pmc=Math.max.apply(null,periodData.map(function(d){return d.c}));
-    var pn=periodData.length;
-    var pmw=460;
-    var pmh=175;
-    var pmm={t:25,r:20,b:50,l:20};
-    
-    function pbarSVG(data,max,val){
-      var svg='<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">';
-      for(var i=0;i<=4;i++){
-        var yh=pmm.t+(pmh-20)*(1-i/4);
-        svg+='<line x1="'+pmm.l+'" y1="'+yh+'" x2="'+(pmw+pmm.l)+'" y2="'+yh+'" stroke="#eee" stroke-dasharray="3"/>';
-      }
-      var bw=Math.min(55,(pmw-20*(pn-1))/pn);
-      var gap=(pmw-bw*pn)/(pn-1);
-      data.forEach(function(d,i){
-        var bx=pmm.l+i*(bw+gap);
-        var bh=Math.max(4,(d[val]/max)*(pmh-20));
-        var by=pmm.t+pmh-20-bh;
-        var col=d[val]>max*0.8?'#FF5722':d[val]<max*0.4?'#42A5F5':'#66BB6A';
-        var name=M[d.a]?M[d.a].a.split('】')[1]||M[d.a].a:d.a;
-        svg+='<rect x="'+bx+'" y="'+by+'" width="'+bw+'" height="'+bh+'" fill="'+col+'" rx="3"/>';
-        svg+='<text x="'+(bx+bw/2)+'" y="'+(by-4)+'" class="fv">'+d[val].toLocaleString()+'</text>';
-        svg+='<text x="'+(bx+bw/2)+'" y="'+(pmm.t+pmh+12)+'" class="ft" text-anchor="middle">'+(name.length>6?name.substr(0,6):name)+'</text>';
-      });
-      svg+='</svg>';
-      return svg;
-    }
-    
-    document.getElementById('ck').innerHTML=pbarSVG(periodData,pmk,'k');
-    document.getElementById('cc').innerHTML=pbarSVG(periodData,pmc,'c');
-    return;
-  }
-  
-  var maxK=Math.max.apply(null,f.map(function(d){return d.k}));
-  var maxC=Math.max.apply(null,f.map(function(d){return d.c}));
-  var n=f.length;
-  var margin={t:25,r:20,b:50,l:20};
-  var w=460;
-  var h=175;
-  
-  function barSVG(arry,max,val){
-    var svg='<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">';
-    for(var i=0;i<=4;i++){
-      var yh=margin.t+(h-20)*(1-i/4);
-      svg+='<line x1="'+margin.l+'" y1="'+yh+'" x2="'+(w+margin.l)+'" y2="'+yh+'" stroke="#eee" stroke-dasharray="3"/>';
-    }
-    var bw=Math.min(55,(w-20*(n-1))/n);
-    var gap=(w-bw*n)/(n-1);
-    f.forEach(function(d,i){
-      var bx=margin.l+i*(bw+gap);
-      var bh=Math.max(4,(d[val]/max)*(h-20));
-      var by=margin.t+h-20-bh;
-      var col=d[val]>max*0.8?'#FF5722':d[val]<max*0.4?'#42A5F5':'#66BB6A';
-      svg+='<rect x="'+bx+'" y="'+by+'" width="'+bw+'" height="'+bh+'" fill="'+col+'" rx="3"/>';
-      svg+='<text x="'+(bx+bw/2)+'" y="'+(by-4)+'" class="fv">'+d[val].toLocaleString()+'</text>';
-      svg+='<text x="'+(bx+bw/2)+'" y="'+(margin.t+h+12)+'" class="ft" text-anchor="middle">'+d.l+'</text>';
-    });
-    svg+='</svg>';
-    return svg;
-  }
-  
-  document.getElementById('ck').innerHTML=barSVG(f,maxK,'k');
-  document.getElementById('cc').innerHTML=barSVG(f,maxC,'c');
-  
-  var avgK=f.reduce(function(s,d){return s+d.k},0)/f.length;
-  document.getElementById('th').innerHTML='<tr><th>期間</th><th>用電(度)</th><th>電費(元)</th><th>單價</th><th>比較</th></tr>';
-  document.getElementById('tb').innerHTML=f.map(function(d){
-    var p=(d.c/d.k).toFixed(2);
-    var bk,bg;
-    if(d.k>avgK*1.1){bk='h';bg='高'}
-    else if(d.k<avgK*0.9){bk='l';bg='低'}
-    else{bk='n';bg='正常'}
-    return'<tr><td>'+d.l+'</td><td>'+d.k.toLocaleString()+'</td><td>$'+d.c.toLocaleString()+'</td><td>$'+p+'</td><td><span class="b '+bk+'">'+bg+'</span></td></tr>';
-  }).join('');
 }
-
+function draw(id,labels,kwh,cost){
+  var svg=document.getElementById(id),W=500,H=200,m={t:20,r:20,b:40,l:40},iW=W-m.l-m.r,iH=H-m.t-m.b,maxK=Math.max(...kwh),maxC=Math.max(...cost);
+  var xS=labels.length>1?iW/(labels.length-1):iW;
+  svg.innerHTML='';
+  var g=document.createElementNS('http://www.w3.org/2000/svg','g');
+  g.setAttribute('transform','translate('+m.l+','+m.t+')');
+  
+  // Grid lines
+  for(var i=0;i<=4;i++){
+    var y=iH/4*i;
+    var line=document.createElementNS('http://www.w3.org/2000/svg','line');
+    line.setAttribute('x1',0);line.setAttribute('y1',y);line.setAttribute('x2',iW);line.setAttribute('y2',y);
+    line.setAttribute('stroke','#eee');line.setAttribute('stroke-width','1');
+    g.appendChild(line);
+  }
+  
+  // KWH bars (blue)
+  kwh.forEach((v,i)=>{
+    var bh=v/maxK*iH,bx=i*xS,bw=Math.max(xS*0.35,12);
+    var rect=document.createElementNS('http://www.w3.org/2000/svg','rect');
+    rect.setAttribute('x',bx-bw/2);rect.setAttribute('y',iH-bh);rect.setAttribute('width',bw);rect.setAttribute('height',bh);
+    rect.setAttribute('fill','#1565C0');rect.setAttribute('rx','3');
+    g.appendChild(rect);
+    var txt=document.createElementNS('http://www.w3.org/2000/svg','text');
+    txt.setAttribute('x',bx);txt.setAttribute('y',iH-bh-5);
+    txt.setAttribute('class','fv');txt.textContent=n(v);
+    g.appendChild(txt);
+  });
+  
+  // Cost line (orange) for second chart
+  if(id==='cc'){
+    var path='M '+kwh.map((v,i)=>{var bh=v/maxK*iH;return(i*xS)+','+(iH-bh)}).join(' L ')+' L '+(kwh.length-1)*xS+','+iH+' L 0,'+iH+' Z';
+    var poly=document.createElementNS('http://www.w3.org/2000/svg','path');
+    poly.setAttribute('d',path);poly.setAttribute('fill','rgba(245,124,0,0.2)');
+    g.appendChild(poly);
+    cost.forEach((v,i)=>{
+      var bh=v/maxC*iH,bx=i*xS;
+      var circle=document.createElementNS('http://www.w3.org/2000/svg','circle');
+      circle.setAttribute('cx',bx);circle.setAttribute('cy',iH-bh);circle.setAttribute('r','4');
+      circle.setAttribute('fill','#F57C00');
+      g.appendChild(circle);
+    });
+  }
+  
+  // X axis
+  labels.forEach((l,i)=>{
+    var txt=document.createElementNS('http://www.w3.org/2000/svg','text');
+    txt.setAttribute('x',i*xS);txt.setAttribute('y',iH+15);
+    txt.setAttribute('class','ft');txt.textContent=l;
+    txt.setAttribute('text-anchor','middle');
+    g.appendChild(txt);
+  });
+  
+  svg.appendChild(g);
+}
 render();
 </script>
 </body>
