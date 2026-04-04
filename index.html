@@ -303,6 +303,7 @@ function render(){
     
     // Show meterBox with all accounts
     document.getElementById('meterBox').style.display='block';
+    document.getElementById('mi').style.display='none';
     document.getElementById('meterTh').innerHTML='<tr><th>電號</th><th>用電(度)</th><th>電費(元)</th><th>單價</th></tr>';
     document.getElementById('meterTb').innerHTML=allAccounts.map(a=>{
       var row=byA[a]||{k:0,c:0};
