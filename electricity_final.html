@@ -100,6 +100,11 @@ footer{padding:12px;font-size:11px}
 </div>
 
 <div class="sel">
+<select id="s3" onchange="render()">
+<option value="y">依年度</option>
+<option value="q">依期別(每2月)</option>
+<option value="p">指定期別各電號</option>
+</select>
 <select id="s1" onchange="render()">
 <option value="all">全部電號總計</option>
 <option value="19-51-2353-20-8">電號1：西井段2568地號</option>
@@ -116,11 +121,6 @@ footer{padding:12px;font-size:11px}
 <option value="19-51-2829-16-6">電號10：正義西路61-1號二樓</option>
 <option value="19-60-5558-05-4">電號11：灣西段594地號</option>
 <option value="19-60-5651-20-7">電號12：灣西段1584地號</option>
-</select>
-<select id="s3" onchange="render()">
-<option value="y">依年度</option>
-<option value="q">依期別(每2月)</option>
-<option value="p">指定期別各電號</option>
 </select>
 <select id="s2" onchange="render()" style="display:none">
 <option value="11311">113年11月</option>
